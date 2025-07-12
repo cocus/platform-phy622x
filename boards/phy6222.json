@@ -22,7 +22,7 @@
   "name": "PhyPlus phy6222",
   "upload": {
     "maximum_ram_size": 59336,
-    "maximum_size": 130816,
+    "maximum_size": 458495,
     "protocol": "serial",
     "protocols": [
       "serial"
