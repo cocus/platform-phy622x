@@ -59,7 +59,7 @@ env.Replace(
     ARFLAGS=["rc"],
 
     SIZEPROGREGEXP=r"^(?:\.text|\.data|\.rodata|\.text.align|\.xip|\.init_section|\.jumptbl|\.gcfgtbl|\.textentry|\.ARM.exidx)\s+(\d+).*",
-    SIZEDATAREGEXP=r"^(?:\.data|\.bss|\.noinit)\s+(\d+).*",
+    SIZEDATAREGEXP=r"^(?:\.data|\.bss|\.noinit|\.text_sram)\s+(\d+).*",
     SIZECHECKCMD="$SIZETOOL -A -d $SOURCES",
     SIZEPRINTCMD='$SIZETOOL -B -d $SOURCES',
 
@@ -129,7 +129,7 @@ target_size = env.Alias(
 AlwaysBuild(target_size)
 
 #
-# Target: Upload by default .bin file
+# Target: Upload by default .hex file
 #
 
 upload_protocol = env.subst("$UPLOAD_PROTOCOL")
