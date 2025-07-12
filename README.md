@@ -1,11 +1,8 @@
-# ST STM32: development platform for [PlatformIO](https://platformio.org)
+# PhyPlus PHY622x platform for [PlatformIO](https://platformio.org)
 
-[![Build Status](https://github.com/platformio/platform-ststm32/workflows/Examples/badge.svg)](https://github.com/platformio/platform-ststm32/actions)
+[![Build Status](https://github.com/cocus/platform-phy622x/workflows/Examples/badge.svg)](https://github.com/platformio/cocus/platform-phy622x/actions)
 
-The STM32 family of 32-bit Flash MCUs based on the ARM Cortex-M processor is designed to offer new degrees of freedom to MCU users. It offers a 32-bit product range that combines very high performance, real-time capabilities, digital signal processing, and low-power, low-voltage operation, while maintaining full integration and ease of development.
-
-* [Home](https://registry.platformio.org/platforms/platformio/ststm32) (home page in the PlatformIO Registry)
-* [Documentation](https://docs.platformio.org/page/platforms/ststm32.html) (advanced usage, packages, boards, frameworks, etc.)
+Work in progress for the PhyPlus PHY622X.
 
 # Usage
 
@@ -16,8 +13,10 @@ The STM32 family of 32-bit Flash MCUs based on the ARM Cortex-M processor is des
 
 ```ini
 [env:stable]
-platform = ststm32
-board = ...
+platform = phy622x
+board = phy6222
+framework = phy622x
+monitor_speed = 115200
 ...
 ```
 
@@ -32,4 +31,4 @@ board = ...
 
 # Configuration
 
-Please navigate to [documentation](https://docs.platformio.org/page/platforms/ststm32.html).
+TBD
