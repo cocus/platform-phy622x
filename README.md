@@ -1,6 +1,6 @@
 # PhyPlus PHY622x platform for [PlatformIO](https://platformio.org)
 
-[![Build Status](https://github.com/cocus/platform-phy622x/workflows/Examples/badge.svg)](https://github.com/platformio/cocus/platform-phy622x/actions)
+[![Build Status](https://github.com/cocus/platform-phy622x/workflows/Examples/badge.svg)](https://github.com/cocus/platform-phy622x/actions)
 
 Work in progress for the PhyPlus PHY622X.
 
@@ -24,8 +24,10 @@ monitor_speed = 115200
 
 ```ini
 [env:development]
-platform = https://github.com/platformio/platform-ststm32.git
-board = ...
+platform = https://github.com/cocus/platform-phy622x.git
+board = phy6222
+framework = phy622x
+monitor_speed = 115200
 ...
 ```
 
