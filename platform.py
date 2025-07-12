@@ -23,7 +23,203 @@ from platformio.project.helpers import get_project_dir
 IS_WINDOWS = sys.platform.startswith("win")
 
 
-class Ststm32Platform(PlatformBase):
+class Phy622xPlatform(PlatformBase):
+
+    def generate_sample_code(self, project_config, environment):
+        framework = project_config.get(f"env:{environment}", "framework", None)
+        if framework != ["phy622x"]:
+            return
+
+        src_dir = project_config.get("platformio", "src_dir")
+
+        # os.getcwd() == CURRENT_PROJECT_DIR
+        main_path = os.path.join(src_dir, "main.c")
+        freertos_config_path = os.path.join(src_dir, "FreeRTOSConfig.h")
+
+        # if project was previously generated
+        if os.path.isfile(main_path) and os.path.isfile(freertos_config_path):
+            return
+
+        main_content = """
+#include "osal_nuker.h"
+#include <log/log.h>
+
+int main(void)
+{
+    /* init stuff as if OSAL was in charge */
+    osal_nuker_init(SYS_CLK_DLL_96M, CLK_32K_RCOSC);
+
+    LOG("Hello!");
+
+    /* Do something here! */
+    return 0;
+}
+
+"""
+        freertos_config_content = """
+/*
+ * FreeRTOS Kernel <DEVELOPMENT BRANCH>
+ * Copyright (C) 2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * https://www.FreeRTOS.org
+ * https://github.com/FreeRTOS
+ *
+ */
+
+#ifndef FREERTOS_CONFIG_H
+#define FREERTOS_CONFIG_H
+
+/******************************************************************************/
+/* Hardware description related definitions. **********************************/
+/******************************************************************************/
+
+#include <stdint.h>
+extern uint32_t sysclk_get_clk(void);
+#define configCPU_CLOCK_HZ    ( ( unsigned long ) sysclk_get_clk() )
+
+#include <log/log.h>
+#define configASSERT( x )         \\
+    if( ( x ) == 0 )              \\
+    {                             \\
+        LOG("ASSERTION FAILED: %s, %d", __FILE__, __LINE__); \\
+        taskDISABLE_INTERRUPTS(); \\
+        for( ; ; )                \\
+        ;                         \\
+    }
+
+/* Definitions that map the FreeRTOS port interrupt handlers to their CMSIS
+standard names. */
+#define vPortSVCHandler    SVC_Handler
+#define xPortPendSVHandler PendSV_Handler
+
+/******************************************************************************/
+/* Scheduling behaviour related definitions. **********************************/
+/******************************************************************************/
+
+#define configTICK_RATE_HZ                         ( 1000U )
+#define configUSE_PREEMPTION                       1
+#define configUSE_TIME_SLICING                     1
+#define configUSE_PORT_OPTIMISED_TASK_SELECTION    0
+#define configUSE_TICKLESS_IDLE                    1
+#define configMAX_PRIORITIES                       5U
+#define configMINIMAL_STACK_SIZE                   128U
+#define configMAX_TASK_NAME_LEN                    4U
+#define configTICK_TYPE_WIDTH_IN_BITS              TICK_TYPE_WIDTH_32_BITS
+#define configIDLE_SHOULD_YIELD                    1
+#define configTASK_NOTIFICATION_ARRAY_ENTRIES      1U
+#define configQUEUE_REGISTRY_SIZE                  0U
+#define configENABLE_BACKWARD_COMPATIBILITY        1
+#define configNUM_THREAD_LOCAL_STORAGE_POINTERS    0
+#define configSTACK_DEPTH_TYPE                     size_t
+#define configMESSAGE_BUFFER_LENGTH_TYPE           size_t
+#define configUSE_NEWLIB_REENTRANT                 0
+
+#define configENABLE_MPU                           0
+#define configCHECK_HANDLER_INSTALLATION           0
+/******************************************************************************/
+/* Software timer related definitions. ****************************************/
+/******************************************************************************/
+
+#define configUSE_TIMERS                1
+#define configTIMER_TASK_PRIORITY       ( configMAX_PRIORITIES - 1U )
+#define configTIMER_TASK_STACK_DEPTH    configMINIMAL_STACK_SIZE
+#define configTIMER_QUEUE_LENGTH        10U
+
+/******************************************************************************/
+/* Memory allocation related definitions. *************************************/
+/******************************************************************************/
+
+#define configSUPPORT_STATIC_ALLOCATION              1
+#define configSUPPORT_DYNAMIC_ALLOCATION             1
+#define configTOTAL_HEAP_SIZE                        4*4096U
+#define configAPPLICATION_ALLOCATED_HEAP             0
+#define configSTACK_ALLOCATION_FROM_SEPARATE_HEAP    0
+#define configUSE_MINI_LIST_ITEM                     0
+
+/******************************************************************************/
+/* Interrupt nesting behaviour configuration. *********************************/
+/******************************************************************************/
+
+#define configKERNEL_INTERRUPT_PRIORITY          0U
+#define configMAX_SYSCALL_INTERRUPT_PRIORITY     0U
+#define configMAX_API_CALL_INTERRUPT_PRIORITY    0U
+
+/******************************************************************************/
+/* Hook and callback function related definitions. ****************************/
+/******************************************************************************/
+
+#define configUSE_IDLE_HOOK                   0
+#define configUSE_TICK_HOOK                   0
+#define configUSE_MALLOC_FAILED_HOOK          0
+#define configUSE_DAEMON_TASK_STARTUP_HOOK    0
+#define configCHECK_FOR_STACK_OVERFLOW        0
+
+/******************************************************************************/
+/* Run time and task stats gathering related definitions. *********************/
+/******************************************************************************/
+
+#define configGENERATE_RUN_TIME_STATS           0
+#define configUSE_TRACE_FACILITY                0
+#define configUSE_STATS_FORMATTING_FUNCTIONS    0
+#define configKERNEL_PROVIDED_STATIC_MEMORY     1
+
+/******************************************************************************/
+/* Definitions that include or exclude functionality. *************************/
+/******************************************************************************/
+
+#define configUSE_TASK_NOTIFICATIONS           1
+#define configUSE_MUTEXES                      1
+#define configUSE_RECURSIVE_MUTEXES            1
+#define configUSE_COUNTING_SEMAPHORES          1
+#define configUSE_QUEUE_SETS                   1
+#define configUSE_APPLICATION_TASK_TAG         1
+#define INCLUDE_vTaskPrioritySet               1
+#define INCLUDE_uxTaskPriorityGet              1
+#define INCLUDE_vTaskDelete                    1
+#define INCLUDE_vTaskSuspend                   1
+#define INCLUDE_vTaskDelayUntil                1
+#define INCLUDE_vTaskDelay                     1
+#define INCLUDE_xTaskGetSchedulerState         1
+#define INCLUDE_xTaskGetCurrentTaskHandle      1
+#define INCLUDE_uxTaskGetStackHighWaterMark    1
+#define INCLUDE_xTaskGetIdleTaskHandle         1
+#define INCLUDE_eTaskGetState                  1
+#define INCLUDE_xTimerPendFunctionCall         1
+#define INCLUDE_xTaskAbortDelay                1
+#define INCLUDE_xTaskGetHandle                 1
+#define INCLUDE_xTaskResumeFromISR             1
+
+#endif /* FREERTOS_CONFIG_H */
+"""
+
+        if not os.path.isdir(src_dir):
+            os.makedirs(src_dir)
+        with open(main_path, mode="w", encoding="utf8") as fp:
+            fp.write(main_content.strip())
+        with open(freertos_config_path, mode="w", encoding="utf8") as fp:
+            fp.write(freertos_config_content.strip())
+
+        return True
+
 
     def configure_default_packages(self, variables, targets):
         board = variables.get("board")
@@ -33,69 +229,6 @@ class Ststm32Platform(PlatformBase):
         build_mcu = variables.get("board_build.mcu", board_config.get("build.mcu", ""))
 
         frameworks = variables.get("pioframework", [])
-        if "arduino" in frameworks:
-            if board.startswith(("portenta", "opta", "nicla_vision", "giga")):
-                self.frameworks["arduino"]["package"] = "framework-arduino-mbed"
-                self.frameworks["arduino"][
-                    "script"
-                ] = "builder/frameworks/arduino/mbed-core/arduino-core-mbed.py"
-                self.packages["framework-arduinoststm32"]["optional"] = True
-            elif build_core == "maple":
-                self.frameworks["arduino"]["package"] = "framework-arduinoststm32-maple"
-                self.packages["framework-arduinoststm32-maple"]["optional"] = False
-                self.packages["framework-arduinoststm32"]["optional"] = True
-            elif build_core == "stm32l0":
-                self.frameworks["arduino"]["package"] = "framework-arduinoststm32l0"
-                self.packages["framework-arduinoststm32l0"]["optional"] = False
-                self.packages["framework-arduinoststm32"]["optional"] = True
-            else:
-                self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.120301.0"
-                self.packages["framework-cmsis"]["version"] = "~2.50900.0"
-                self.packages["framework-cmsis"]["optional"] = False
-
-        if "mbed" in frameworks:
-            self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.90201.0"
-
-        if "cmsis" in frameworks:
-            assert build_mcu, ("Missing MCU field for %s" % board)
-            device_package = "framework-cmsis-" + build_mcu[0:7]
-            if device_package in self.packages:
-                self.packages[device_package]["optional"] = False
-
-        if "stm32cube" in frameworks:
-            assert build_mcu, ("Missing MCU field for %s" % board)
-            device_package = "framework-stm32cube%s" % build_mcu[5:7]
-            self.frameworks["stm32cube"]["package"] = device_package
-
-        if any(f in frameworks for f in ("cmsis", "stm32cube")):
-            self.packages["tool-ldscripts-ststm32"]["optional"] = False
-
-        default_protocol = board_config.get("upload.protocol") or ""
-        if variables.get("upload_protocol", default_protocol) == "dfu":
-            dfu_package = "tool-dfuutil"
-            if board.startswith(("portenta", "opta", "nicla", "giga")):
-                dfu_package = "tool-dfuutil-arduino"
-                self.packages.pop("tool-dfuutil")
-            elif build_mcu.startswith("stm32f103"):
-                dfu_package = "tool-stm32duino"
-            else:
-                self.packages.pop("tool-dfuutil-arduino")
-            self.packages[dfu_package]["optional"] = False
-
-        if board == "mxchip_az3166":
-            self.frameworks["arduino"][
-                "package"] = "framework-arduinostm32mxchip"
-            self.frameworks["arduino"][
-                "script"] = "builder/frameworks/arduino/mxchip.py"
-            self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.60301.0"
-
-        if "zephyr" in variables.get("pioframework", []):
-            for p in self.packages:
-                if p in ("tool-cmake", "tool-dtc", "tool-ninja"):
-                    self.packages[p]["optional"] = False
-            self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.120301.0"
-            if not IS_WINDOWS:
-                self.packages["tool-gperf"]["optional"] = False
 
         # configure J-LINK tool
         jlink_conds = [
@@ -113,34 +246,6 @@ class Ststm32Platform(PlatformBase):
 
         return PlatformBase.configure_default_packages(self, variables,
                                                        targets)
-
-    def install_package(self, name, *args, **kwargs):
-        pkg = super().install_package(name, *args, **kwargs)
-        if name != "framework-zephyr":
-            return pkg
-
-        prj_west_manifest = os.path.join(get_project_dir(), "west.yml")
-        try:
-            (
-                subprocess.run(
-                    [
-                        os.path.normpath(sys.executable),
-                        os.path.join(
-                            pkg.path, "scripts", "platformio", "install-deps.py"
-                        ),
-                        "--platform",
-                        self.name,
-                    ] + (
-                        ["--manifest", prj_west_manifest]
-                        if os.path.isfile(prj_west_manifest)
-                        else []
-                    )
-                )
-            )
-        except subprocess.CalledProcessError:
-            self.pm.log.info("Failed to install Zephyr dependencies!")
-
-        return pkg
 
     def get_boards(self, id_=None):
         result = PlatformBase.get_boards(self, id_)

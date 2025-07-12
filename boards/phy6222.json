@@ -1,0 +1,33 @@
+{
+  "build": {
+    "cpu": "cortex-m0",
+    "extra_flags": "-DPHY_MCU_TYPE=MCU_BUMBEE_M0",
+    "f_cpu": "32000000L",
+    "mcu": "phy6222",
+    "product_line": "PHY622x",
+    "variant": "PHY622x/6222"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32F030R8",
+    "openocd_board": "stm32f0discovery",
+    "openocd_target": "stm32f0x",
+    "svd_path": "STM32F030.svd"
+  },
+  "frameworks": [
+    "phy622x"
+  ],
+  "name": "PhyPlus phy6222",
+  "upload": {
+    "maximum_ram_size": 59336,
+    "maximum_size": 130816,
+    "protocol": "serial",
+    "protocols": [
+      "serial"
+    ]
+  },
+  "url": "http://www.st.com/en/evaluation-tools/32f0308discovery.html",
+  "vendor": "PhyPlus"
+}

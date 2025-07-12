@@ -32,8 +32,12 @@ env.Append(
         "-Os",  # optimize for size
         "-ffunction-sections",  # place each function in its own section
         "-fdata-sections",
-        "-Wall",
-        "-mthumb"
+        "-funsigned-char",
+        "-funsigned-bitfields",
+        "-fms-extensions",
+        "-mthumb-interwork",
+        "-mthumb",
+        "-Wall"
     ],
 
     CXXFLAGS=[
@@ -42,12 +46,15 @@ env.Append(
     ],
 
     CPPDEFINES=[
-        ("F_CPU", "$BOARD_F_CPU")
+        ("F_CPU", "$BOARD_F_CPU"),
+        "ARMCM0",
+        "USE_ROM_GPIO"
     ],
 
     LINKFLAGS=[
         "-Os",
         "-Wl,--gc-sections,--relax",
+        "-mthumb-interwork",
         "-mthumb"
     ],
 
