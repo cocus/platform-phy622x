@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -U https://github.com/platformio/platformio/archive/develop.zip
-          pio pkg install --global --tool git@github.com:cocus/framework-phy622x.git
+          pio pkg install --global --tool https://github.com/cocus/framework-phy622x.git
           pio pkg install --global --platform symlink://.
       - name: Build examples
         run: |
