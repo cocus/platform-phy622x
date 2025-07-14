@@ -12,9 +12,12 @@
       "stlink"
     ],
     "jlink_device": "STM32F030R8",
-    "openocd_board": "stm32f0discovery",
-    "openocd_target": "stm32f0x",
-    "svd_path": "STM32F030.svd"
+    "openocd_extra_args": [
+      "-c",
+      "reset_config none"
+    ],
+    "openocd_target": "phy6222",
+    "svd_path": "PHY6222.svd"
   },
   "frameworks": [
     "phy622x"

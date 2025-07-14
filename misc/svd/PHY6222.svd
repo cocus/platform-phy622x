@@ -1,0 +1,3292 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<device schemaVersion="1.1"
+xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
+  <name>PHY6222</name>
+  <version>1.0</version>
+  <description>PhyPlus PHY6222</description>
+  <cpu>                                                           <!-- details about the cpu embedded in the device -->
+    <name>CM0</name>
+    <revision>r0p0</revision>
+    <endian>little</endian>
+    <mpuPresent>false</mpuPresent>
+    <fpuPresent>false</fpuPresent>
+    <nvicPrioBits>2</nvicPrioBits>
+    <vendorSystickConfig>false</vendorSystickConfig>
+  </cpu>
+  <!--Bus Interface Properties-->
+  <!--Cortex-M0 is byte addressable-->
+  <addressUnitBits>8</addressUnitBits>
+  <!--the maximum data bit width accessible within a single transfer-->
+  <width>32</width>
+  <!--Register Default Properties-->
+  <size>0x20</size>
+  <resetValue>0x0</resetValue>
+  <resetMask>0xFFFFFFFF</resetMask>
+  <peripherals>
+
+    <peripheral>
+      <name>TIM1</name>
+      <description>Timer</description>
+      <groupName>TIM</groupName>
+      <baseAddress>0x40001000</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0xA0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <interrupt>
+        <name>TIM1_IRQn</name>
+        <description>TIM1 interrupt</description>
+        <value>20</value>
+      </interrupt>
+      <registers>
+        <register>
+          <name>LoadCount</name>
+          <displayName>LoadCount</displayName>
+          <description>LoadCount</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+        </register>
+        <register>
+          <name>CurrentCount</name>
+          <displayName>CurrentCount</displayName>
+          <description>CurrentCount</description>
+          <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+        </register>
+        <register>
+          <name>ControlReg</name>
+          <displayName>ControlReg</displayName>
+          <description>ControlReg</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>Timer_Interrupt_Mask</name>
+              <description>Interrup Mask</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>Timer_Mode</name>
+              <description>Timer Mode</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>Timer_Enable</name>
+              <description>Timer Enable</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>EOI</name>
+          <displayName>EOI</displayName>
+          <description>EOI</description>
+          <addressOffset>0xC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>Timer_End_of_Interrupt</name>
+              <description>Timer end of interrupt</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>status</name>
+          <displayName>status</displayName>
+          <description>Status</description>
+          <addressOffset>0x10</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>Timer_Interrupt_Status</name>
+              <description>Interrupt status</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral derivedFrom="TIM1">
+      <name>TIM2</name>
+      <baseAddress>0x40001014</baseAddress>
+    </peripheral>
+    <peripheral derivedFrom="TIM1">
+      <name>TIM3</name>
+      <baseAddress>0x40001028</baseAddress>
+    </peripheral>
+    <peripheral derivedFrom="TIM1">
+      <name>TIM4</name>
+      <baseAddress>0x4000103c</baseAddress>
+    </peripheral>
+    <peripheral derivedFrom="TIM1">
+      <name>TIM5</name>
+      <baseAddress>0x40001050</baseAddress>
+    </peripheral>
+    <peripheral derivedFrom="TIM1">
+      <name>TIM6</name>
+      <baseAddress>0x40001064</baseAddress>
+    </peripheral>
+    <peripheral>
+      <name>TIM_SYS</name>
+      <description>SysTick</description>
+      <groupName>TIM</groupName>
+      <baseAddress>0x400010a0</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x80</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <interrupt>
+        <name>SysTick_IRQn</name>
+        <description>SysTick interrupt</description>
+        <value>-1</value>
+      </interrupt>
+      <registers>
+        <register>
+          <name>IntStatus</name>
+          <displayName>IntStatus</displayName>
+          <description>IntStatus</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+        </register>
+        <register>
+          <name>EOI</name>
+          <displayName>EOI</displayName>
+          <description>EOI</description>
+          <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+        </register>
+        <register>
+          <name>unMaskIntStatus</name>
+          <displayName>unMaskIntStatus</displayName>
+          <description>unMaskIntStatus</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+        </register>
+        <register>
+          <name>version</name>
+          <displayName>version</displayName>
+          <description>version</description>
+          <addressOffset>0xC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>GPIO</name>
+      <description>General-purpose I/Os</description>
+      <groupName>GPIO</groupName>
+      <baseAddress>0x48008000</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x3c0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>swporta_dr</name>
+          <displayName>swporta_dr</displayName>
+          <description>GPIO Data Register (Values)</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>swporta_dr_22</name>
+              <description>GPIO34 value</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_21</name>
+              <description>GPIO33 value</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_20</name>
+              <description>GPIO32 value</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_19</name>
+              <description>GPIO31 value</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_18</name>
+              <description>GPIO27 value</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_17</name>
+              <description>GPIO26 value</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_16</name>
+              <description>GPIO25 value</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_15</name>
+              <description>GPIO24 value</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_14</name>
+              <description>GPIO23 value</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_13</name>
+              <description>GPIO20 value</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_12</name>
+              <description>GPIO18 value</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_11</name>
+              <description>GPIO17 value</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_10</name>
+              <description>GPIO16 value</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_9</name>
+              <description>GPIO15 value</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_8</name>
+              <description>GPIO14 value</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_7</name>
+              <description>GPIO11 value</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_6</name>
+              <description>GPIO10 value</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_5</name>
+              <description>GPIO09 value</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_4</name>
+              <description>GPIO07 value</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_3</name>
+              <description>GPIO03 value</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_2</name>
+              <description>GPIO02 value</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_1</name>
+              <description>GPIO01 value</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_dr_0</name>
+              <description>GPIO00 value</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>swporta_ddr</name>
+          <displayName>swporta_ddr</displayName>
+          <description>GPIO Direction Register</description>
+          <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>swporta_ddr_22</name>
+              <description>GPIO34 direction</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_21</name>
+              <description>GPIO33 direction</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_20</name>
+              <description>GPIO32 direction</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_19</name>
+              <description>GPIO31 direction</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_18</name>
+              <description>GPIO27 direction</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_17</name>
+              <description>GPIO26 direction</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_16</name>
+              <description>GPIO25 direction</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_15</name>
+              <description>GPIO24 direction</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_14</name>
+              <description>GPIO23 direction</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_13</name>
+              <description>GPIO20 direction</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_12</name>
+              <description>GPIO18 direction</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_11</name>
+              <description>GPIO17 direction</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_10</name>
+              <description>GPIO16 direction</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_9</name>
+              <description>GPIO15 direction</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_8</name>
+              <description>GPIO14 direction</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_7</name>
+              <description>GPIO11 direction</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_6</name>
+              <description>GPIO10 direction</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_5</name>
+              <description>GPIO09 direction</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_4</name>
+              <description>GPIO07 direction</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_3</name>
+              <description>GPIO03 direction</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_2</name>
+              <description>GPIO02 direction</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_1</name>
+              <description>GPIO01 direction</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>swporta_ddr_0</name>
+              <description>GPIO00 direction</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>swporta_ctl</name>
+          <displayName>swporta_ctl</displayName>
+          <description>GPIO port A data source</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+        </register>
+        <register>
+          <name>inten</name>
+          <displayName>inten</displayName>
+          <description>GPIO interrupt enable</description>
+          <addressOffset>0x30</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>inten_22</name>
+              <description>GPIO34 interrupt enable</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_21</name>
+              <description>GPIO33 interrupt enable</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_20</name>
+              <description>GPIO32 interrupt enable</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_19</name>
+              <description>GPIO31 interrupt enable</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_18</name>
+              <description>GPIO27 interrupt enable</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_17</name>
+              <description>GPIO26 interrupt enable</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_16</name>
+              <description>GPIO25 interrupt enable</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_15</name>
+              <description>GPIO24 interrupt enable</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_14</name>
+              <description>GPIO23 interrupt enable</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_13</name>
+              <description>GPIO20 interrupt enable</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_12</name>
+              <description>GPIO18 interrupt enable</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_11</name>
+              <description>GPIO17 interrupt enable</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_10</name>
+              <description>GPIO16 interrupt enable</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_9</name>
+              <description>GPIO15 interrupt enable</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_8</name>
+              <description>GPIO14 interrupt enable</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_7</name>
+              <description>GPIO11 interrupt enable</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_6</name>
+              <description>GPIO10 interrupt enable</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_5</name>
+              <description>GPIO09 interrupt enable</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_4</name>
+              <description>GPIO07 interrupt enable</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_3</name>
+              <description>GPIO03 interrupt enable</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_2</name>
+              <description>GPIO02 interrupt enable</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_1</name>
+              <description>GPIO01 interrupt enable</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inten_0</name>
+              <description>GPIO00 interrupt enable</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>intmask</name>
+          <displayName>intmask</displayName>
+          <description>GPIO interrupt mask</description>
+          <addressOffset>0x34</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>intmask_22</name>
+              <description>GPIO34 interrupt mask</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_21</name>
+              <description>GPIO33 interrupt mask</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_20</name>
+              <description>GPIO32 interrupt mask</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_19</name>
+              <description>GPIO31 interrupt mask</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_18</name>
+              <description>GPIO27 interrupt mask</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_17</name>
+              <description>GPIO26 interrupt mask</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_16</name>
+              <description>GPIO25 interrupt mask</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_15</name>
+              <description>GPIO24 interrupt mask</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_14</name>
+              <description>GPIO23 interrupt mask</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_13</name>
+              <description>GPIO20 interrupt mask</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_12</name>
+              <description>GPIO18 interrupt mask</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_11</name>
+              <description>GPIO17 interrupt mask</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_10</name>
+              <description>GPIO16 interrupt mask</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_9</name>
+              <description>GPIO15 interrupt mask</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_8</name>
+              <description>GPIO14 interrupt mask</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_7</name>
+              <description>GPIO11 interrupt mask</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_6</name>
+              <description>GPIO10 interrupt mask</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_5</name>
+              <description>GPIO09 interrupt mask</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_4</name>
+              <description>GPIO07 interrupt mask</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_3</name>
+              <description>GPIO03 interrupt mask</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_2</name>
+              <description>GPIO02 interrupt mask</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_1</name>
+              <description>GPIO01 interrupt mask</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>intmask_0</name>
+              <description>GPIO00 interrupt mask</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>inttype_level</name>
+          <displayName>inttype_level</displayName>
+          <description>GPIO interrupt trigger level</description>
+          <addressOffset>0x38</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>inttype_level_22</name>
+              <description>GPIO34 interrupt trigger level</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_21</name>
+              <description>GPIO33 interrupt trigger level</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_20</name>
+              <description>GPIO32 interrupt trigger level</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_19</name>
+              <description>GPIO31 interrupt trigger level</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_18</name>
+              <description>GPIO27 interrupt trigger level</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_17</name>
+              <description>GPIO26 interrupt trigger level</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_16</name>
+              <description>GPIO25 interrupt trigger level</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_15</name>
+              <description>GPIO24 interrupt trigger level</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_14</name>
+              <description>GPIO23 interrupt trigger level</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_13</name>
+              <description>GPIO20 interrupt trigger level</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_12</name>
+              <description>GPIO18 interrupt trigger level</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_11</name>
+              <description>GPIO17 interrupt trigger level</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_10</name>
+              <description>GPIO16 interrupt trigger level</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_9</name>
+              <description>GPIO15 interrupt trigger level</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_8</name>
+              <description>GPIO14 interrupt trigger level</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_7</name>
+              <description>GPIO11 interrupt trigger level</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_6</name>
+              <description>GPIO10 interrupt trigger level</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_5</name>
+              <description>GPIO09 interrupt trigger level</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_4</name>
+              <description>GPIO07 interrupt trigger level</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_3</name>
+              <description>GPIO03 interrupt trigger level</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_2</name>
+              <description>GPIO02 interrupt trigger level</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_1</name>
+              <description>GPIO01 interrupt trigger level</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>inttype_level_0</name>
+              <description>GPIO00 interrupt trigger level</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>int_polarity</name>
+          <displayName>int_polarity</displayName>
+          <description>GPIO interrupt trigger polarity</description>
+          <addressOffset>0x3c</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>int_polarity_22</name>
+              <description>GPIO34 interrupt trigger polarity</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_21</name>
+              <description>GPIO33 interrupt trigger polarity</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_20</name>
+              <description>GPIO32 interrupt trigger polarity</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_19</name>
+              <description>GPIO31 interrupt trigger polarity</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_18</name>
+              <description>GPIO27 interrupt trigger polarity</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_17</name>
+              <description>GPIO26 interrupt trigger polarity</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_16</name>
+              <description>GPIO25 interrupt trigger polarity</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_15</name>
+              <description>GPIO24 interrupt trigger polarity</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_14</name>
+              <description>GPIO23 interrupt trigger polarity</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_13</name>
+              <description>GPIO20 interrupt trigger polarity</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_12</name>
+              <description>GPIO18 interrupt trigger polarity</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_11</name>
+              <description>GPIO17 interrupt trigger polarity</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_10</name>
+              <description>GPIO16 interrupt trigger polarity</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_9</name>
+              <description>GPIO15 interrupt trigger polarity</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_8</name>
+              <description>GPIO14 interrupt trigger polarity</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_7</name>
+              <description>GPIO11 interrupt trigger polarity</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_6</name>
+              <description>GPIO10 interrupt trigger polarity</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_5</name>
+              <description>GPIO09 interrupt trigger polarity</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_4</name>
+              <description>GPIO07 interrupt trigger polarity</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_3</name>
+              <description>GPIO03 interrupt trigger polarity</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_2</name>
+              <description>GPIO02 interrupt trigger polarity</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_1</name>
+              <description>GPIO01 interrupt trigger polarity</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_polarity_0</name>
+              <description>GPIO00 interrupt trigger polarity</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>int_status</name>
+          <displayName>int_status</displayName>
+          <description>GPIO interrupt status</description>
+          <addressOffset>0x40</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>int_status_22</name>
+              <description>GPIO34 interrupt status</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_21</name>
+              <description>GPIO33 interrupt status</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_20</name>
+              <description>GPIO32 interrupt status</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_19</name>
+              <description>GPIO31 interrupt status</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_18</name>
+              <description>GPIO27 interrupt status</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_17</name>
+              <description>GPIO26 interrupt status</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_16</name>
+              <description>GPIO25 interrupt status</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_15</name>
+              <description>GPIO24 interrupt status</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_14</name>
+              <description>GPIO23 interrupt status</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_13</name>
+              <description>GPIO20 interrupt status</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_12</name>
+              <description>GPIO18 interrupt status</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_11</name>
+              <description>GPIO17 interrupt status</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_10</name>
+              <description>GPIO16 interrupt status</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_9</name>
+              <description>GPIO15 interrupt status</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_8</name>
+              <description>GPIO14 interrupt status</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_7</name>
+              <description>GPIO11 interrupt status</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_6</name>
+              <description>GPIO10 interrupt status</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_5</name>
+              <description>GPIO09 interrupt status</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_4</name>
+              <description>GPIO07 interrupt status</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_3</name>
+              <description>GPIO03 interrupt status</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_2</name>
+              <description>GPIO02 interrupt status</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_1</name>
+              <description>GPIO01 interrupt status</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>int_status_0</name>
+              <description>GPIO00 interrupt status</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>raw_intstatus</name>
+          <displayName>raw_intstatus</displayName>
+          <description>GPIO interrupt raw status</description>
+          <addressOffset>0x44</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>raw_intstatus_22</name>
+              <description>GPIO34 interrupt raw status</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_21</name>
+              <description>GPIO33 interrupt raw status</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_20</name>
+              <description>GPIO32 interrupt raw status</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_19</name>
+              <description>GPIO31 interrupt raw status</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_18</name>
+              <description>GPIO27 interrupt raw status</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_17</name>
+              <description>GPIO26 interrupt raw status</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_16</name>
+              <description>GPIO25 interrupt raw status</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_15</name>
+              <description>GPIO24 interrupt raw status</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_14</name>
+              <description>GPIO23 interrupt raw status</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_13</name>
+              <description>GPIO20 interrupt raw status</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_12</name>
+              <description>GPIO18 interrupt raw status</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_11</name>
+              <description>GPIO17 interrupt raw status</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_10</name>
+              <description>GPIO16 interrupt raw status</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_9</name>
+              <description>GPIO15 interrupt raw status</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_8</name>
+              <description>GPIO14 interrupt raw status</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_7</name>
+              <description>GPIO11 interrupt raw status</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_6</name>
+              <description>GPIO10 interrupt raw status</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_5</name>
+              <description>GPIO09 interrupt raw status</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_4</name>
+              <description>GPIO07 interrupt raw status</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_3</name>
+              <description>GPIO03 interrupt raw status</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_2</name>
+              <description>GPIO02 interrupt raw status</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_1</name>
+              <description>GPIO01 interrupt raw status</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>raw_intstatus_0</name>
+              <description>GPIO00 interrupt raw status</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>debounce</name>
+          <displayName>debounce</displayName>
+          <description>GPIO debounce</description>
+          <addressOffset>0x48</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>debounce_22</name>
+              <description>GPIO34 debounce enable</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_21</name>
+              <description>GPIO33 debounce enable</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_20</name>
+              <description>GPIO32 debounce enable</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_19</name>
+              <description>GPIO31 debounce enable</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_18</name>
+              <description>GPIO27 debounce enable</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_17</name>
+              <description>GPIO26 debounce enable</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_16</name>
+              <description>GPIO25 debounce enable</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_15</name>
+              <description>GPIO24 debounce enable</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_14</name>
+              <description>GPIO23 debounce enable</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_13</name>
+              <description>GPIO20 debounce enable</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_12</name>
+              <description>GPIO18 debounce enable</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_11</name>
+              <description>GPIO17 debounce enable</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_10</name>
+              <description>GPIO16 debounce enable</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_9</name>
+              <description>GPIO15 debounce enable</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_8</name>
+              <description>GPIO14 debounce enable</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_7</name>
+              <description>GPIO11 debounce enable</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_6</name>
+              <description>GPIO10 debounce enable</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_5</name>
+              <description>GPIO09 debounce enable</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_4</name>
+              <description>GPIO07 debounce enable</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_3</name>
+              <description>GPIO03 debounce enable</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_2</name>
+              <description>GPIO02 debounce enable</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_1</name>
+              <description>GPIO01 debounce enable</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce_0</name>
+              <description>GPIO00 debounce enable</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>porta_eoi</name>
+          <displayName>porta_eoi</displayName>
+          <description>GPIO clear interrupt</description>
+          <addressOffset>0x4c</addressOffset>
+          <size>0x20</size>
+          <access>write-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>porta_eoi_22</name>
+              <description>GPIO34 clear interrupt</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_21</name>
+              <description>GPIO33 clear interrupt</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_20</name>
+              <description>GPIO32 clear interrupt</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_19</name>
+              <description>GPIO31 clear interrupt</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_18</name>
+              <description>GPIO27 clear interrupt</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_17</name>
+              <description>GPIO26 clear interrupt</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_16</name>
+              <description>GPIO25 clear interrupt</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_15</name>
+              <description>GPIO24 clear interrupt</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_14</name>
+              <description>GPIO23 clear interrupt</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_13</name>
+              <description>GPIO20 clear interrupt</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_12</name>
+              <description>GPIO18 clear interrupt</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_11</name>
+              <description>GPIO17 clear interrupt</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_10</name>
+              <description>GPIO16 clear interrupt</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_9</name>
+              <description>GPIO15 clear interrupt</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_8</name>
+              <description>GPIO14 clear interrupt</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_7</name>
+              <description>GPIO11 clear interrupt</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_6</name>
+              <description>GPIO10 clear interrupt</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_5</name>
+              <description>GPIO09 clear interrupt</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_4</name>
+              <description>GPIO07 clear interrupt</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_3</name>
+              <description>GPIO03 clear interrupt</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_2</name>
+              <description>GPIO02 clear interrupt</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_1</name>
+              <description>GPIO01 clear interrupt</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_eoi_0</name>
+              <description>GPIO00 clear interrupt</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>ext_porta</name>
+          <displayName>ext_porta</displayName>
+          <description>GPIO input value</description>
+          <addressOffset>0x50</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>ext_porta_22</name>
+              <description>GPIO34 input value</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_21</name>
+              <description>GPIO33 input value</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_20</name>
+              <description>GPIO32 input value</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_19</name>
+              <description>GPIO31 input value</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_18</name>
+              <description>GPIO27 input value</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_17</name>
+              <description>GPIO26 input value</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_16</name>
+              <description>GPIO25 input value</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_15</name>
+              <description>GPIO24 input value</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_14</name>
+              <description>GPIO23 input value</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_13</name>
+              <description>GPIO20 input value</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_12</name>
+              <description>GPIO18 input value</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_11</name>
+              <description>GPIO17 input value</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_10</name>
+              <description>GPIO16 input value</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_9</name>
+              <description>GPIO15 input value</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_8</name>
+              <description>GPIO14 input value</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_7</name>
+              <description>GPIO11 input value</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_6</name>
+              <description>GPIO10 input value</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_5</name>
+              <description>GPIO09 input value</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_4</name>
+              <description>GPIO07 input value</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_3</name>
+              <description>GPIO03 input value</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_2</name>
+              <description>GPIO02 input value</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_1</name>
+              <description>GPIO01 input value</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ext_porta_0</name>
+              <description>GPIO00 input value</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>ls_sync</name>
+          <displayName>ls_sync</displayName>
+          <description>GPIO synchronization level</description>
+          <addressOffset>0x60</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>ext_porta_22</name>
+              <description>Synchronization level</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>id_code</name>
+          <displayName>id_code</displayName>
+          <description>GPIO ID Code</description>
+          <addressOffset>0x64</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>id_code</name>
+              <description>ID Code</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>16</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>ver_id_code</name>
+          <displayName>ver_id_code</displayName>
+          <description>GPIO Component Version</description>
+          <addressOffset>0x6c</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>component_version</name>
+              <description>Component Version</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>32</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>config_reg2</name>
+          <displayName>IDR</displayName>
+          <description>GPIO component configuration2</description>
+          <addressOffset>0x70</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+        </register>
+        <register>
+          <name>config_reg1</name>
+          <displayName>config_reg1</displayName>
+          <description>GPIO component configuration1</description>
+          <addressOffset>0x74</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x000F000A</resetValue>
+          <fields>
+            <field>
+              <name>encoded_id_width</name>
+              <description>Encoded ID width</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>15</bitWidth>
+            </field>
+            <field>
+              <name>id</name>
+              <description>ID</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>add_encoded_params</name>
+              <description>Additional Encoded Params</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debounce</name>
+              <description>Debounce</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_intr</name>
+              <description>PORTA Interrupt</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>hw_portb</name>
+              <description>HW PORTB</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>hw_porta</name>
+              <description>HW PORTA</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>portb_single_ctl</name>
+              <description>PORTB single control</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>porta_single_ctl</name>
+              <description>PORTA single control</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>num_ports</name>
+              <description>Number of GPIO ports</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>apb_data_width</name>
+              <description>Data width of APB connection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>IOMUX</name>
+      <description>IO Mux</description>
+      <groupName>GPIO</groupName>
+      <baseAddress>0x40003800</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x2a0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>Analog_IO_en</name>
+          <displayName>Analog_IO_en</displayName>
+          <description>Pin configuration as Analog input</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>Analog_IO_en_9</name>
+              <description>AIO_8</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>Analog_IO_en_8</name>
+              <description>AIO_2</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>Analog_IO_en_7</name>
+              <description>AIO_1</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>Analog_IO_en_6</name>
+              <description>AIO_9</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>Analog_IO_en_5</name>
+              <description>AIO_7</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>Analog_IO_en_4</name>
+              <description>AIO_6</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>Analog_IO_en_3</name>
+              <description>AIO_5</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>Analog_IO_en_2</name>
+              <description>AIO_4</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>Analog_IO_en_1</name>
+              <description>AIO_3</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>Analog_IO_en_0</name>
+              <description>AIO_0</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>SPI_debug_en</name>
+          <displayName>SPI_debug_en</displayName>
+          <description>SPI_debug_en</description>
+          <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+        </register>
+        <register>
+          <name>debug_mux_en</name>
+          <displayName>debug_mux_en</displayName>
+          <description>debug_mux_en</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>debug_mux_en_7</name>
+              <description>Clock XT 32.768kHz</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debug_mux_en_6</name>
+              <description>Clock RC 32.768kHz</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debug_mux_en_2</name>
+              <description>Clock 1.28MHz</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debug_mux_en_1</name>
+              <description>Clock PCLK/4</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>debug_mux_en_0</name>
+              <description>Clock HCLK/8</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>full_mux0_en</name>
+          <displayName>full_mux0_en</displayName>
+          <description>Pin routing to the full mux</description>
+          <addressOffset>0xC</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>full_mux0_en_22</name>
+              <description>GPIO34 routing enable</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_21</name>
+              <description>GPIO33 routing enable</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_20</name>
+              <description>GPIO32 routing enable</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_19</name>
+              <description>GPIO31 routing enable</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_18</name>
+              <description>GPIO27 routing enable</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_17</name>
+              <description>GPIO26 routing enable</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_16</name>
+              <description>GPIO25 routing enable</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_15</name>
+              <description>GPIO24 routing enable</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_14</name>
+              <description>GPIO23 routing enable</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_13</name>
+              <description>GPIO20 routing enable</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_12</name>
+              <description>GPIO18 routing enable</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_11</name>
+              <description>GPIO17 routing enable</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_10</name>
+              <description>GPIO16 routing enable</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_9</name>
+              <description>GPIO15 routing enable</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_8</name>
+              <description>GPIO14 routing enable</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_7</name>
+              <description>GPIO11 routing enable</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_6</name>
+              <description>GPIO10 routing enable</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_5</name>
+              <description>GPIO09 routing enable</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_4</name>
+              <description>GPIO07 routing enable</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_3</name>
+              <description>GPIO03 routing enable</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_2</name>
+              <description>GPIO02 routing enable</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_1</name>
+              <description>GPIO01 routing enable</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>full_mux0_en_0</name>
+              <description>GPIO00 routing enable</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>full_mux1_en</name>
+          <displayName>full_mux1_en</displayName>
+          <description>Pin routing to the full mux (reserved)</description>
+          <addressOffset>0x10</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+        </register>
+        <register>
+          <name>gpio_pad_en</name>
+          <displayName>gpio_pad_en</displayName>
+          <description>SWD pin routing</description>
+          <addressOffset>0x14</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>gpio_pad_en1</name>
+              <description>GPIO03 selection as GPIO03 or SWD_CLK</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>gpio_pad_en0</name>
+              <description>GPIO02 selection as GPIO03 or SWD_IO</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>gpio_sel0</name>
+          <displayName>gpio_sel0</displayName>
+          <description>GPIO function selection register 0</description>
+          <addressOffset>0x18</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>r_func_io03_sel</name>
+              <description>GPIO03 function selection</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io02_sel</name>
+              <description>GPIO02 function selection</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io01_sel</name>
+              <description>GPIO01 function selection</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io00_sel</name>
+              <description>GPIO00 function selection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>gpio_sel1</name>
+          <displayName>gpio_sel1</displayName>
+          <description>GPIO function selection register 1</description>
+          <addressOffset>0x1c</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>r_func_io07_sel</name>
+              <description>GPIO07 function selection</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io06_sel</name>
+              <description>GPIO06 function selection</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io05_sel</name>
+              <description>GPIO05 function selection</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io4_sel</name>
+              <description>GPIO04 function selection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>gpio_sel2</name>
+          <displayName>gpio_sel2</displayName>
+          <description>GPIO function selection register 2</description>
+          <addressOffset>0x20</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>r_func_io11_sel</name>
+              <description>GPIO11 function selection</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io10_sel</name>
+              <description>GPIO10 function selection</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io09_sel</name>
+              <description>GPIO09 function selection</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io08_sel</name>
+              <description>GPIO08 function selection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>gpio_sel3</name>
+          <displayName>gpio_sel3</displayName>
+          <description>GPIO function selection register 3</description>
+          <addressOffset>0x24</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>r_func_io15_sel</name>
+              <description>GPIO15 function selection</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io14_sel</name>
+              <description>GPIO14 function selection</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io13_sel</name>
+              <description>GPIO13 function selection</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io12_sel</name>
+              <description>GPIO12 function selection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>gpio_sel4</name>
+          <displayName>gpio_sel4</displayName>
+          <description>GPIO function selection register 4</description>
+          <addressOffset>0x28</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>r_func_io19_sel</name>
+              <description>GPIO19 function selection</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io18_sel</name>
+              <description>GPIO18 function selection</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io17_sel</name>
+              <description>GPIO17 function selection</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io16_sel</name>
+              <description>GPIO16 function selection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>gpio_sel5</name>
+          <displayName>gpio_sel5</displayName>
+          <description>GPIO function selection register 5</description>
+          <addressOffset>0x2c</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>r_func_io25_sel</name>
+              <description>GPIO25 function selection</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io24_sel</name>
+              <description>GPIO24 function selection</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io23_sel</name>
+              <description>GPIO23 function selection</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io22_sel</name>
+              <description>GPIO22 function selection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>gpio_sel6</name>
+          <displayName>gpio_sel6</displayName>
+          <description>GPIO function selection register 6</description>
+          <addressOffset>0x30</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>r_func_io29_sel</name>
+              <description>GPIO29 function selection</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io28_sel</name>
+              <description>GPIO28 function selection</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io27_sel</name>
+              <description>GPIO27 function selection</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io26_sel</name>
+              <description>GPIO26 function selection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>gpio_sel7</name>
+          <displayName>gpio_sel7</displayName>
+          <description>GPIO function selection register 74</description>
+          <addressOffset>0x34</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>r_func_io33_sel</name>
+              <description>GPIO33 function selection</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io32_sel</name>
+              <description>GPIO32 function selection</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io31_sel</name>
+              <description>GPIO31 function selection</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io30_sel</name>
+              <description>GPIO30 function selection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>gpio_sel8</name>
+          <displayName>gpio_sel8</displayName>
+          <description>GPIO function selection register 8</description>
+          <addressOffset>0x38</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>r_func_io37_sel</name>
+              <description>GPIO37 function selection</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io36_sel</name>
+              <description>GPIO36 function selection</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io35_sel</name>
+              <description>GPIO35 function selection</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>r_func_io34_sel</name>
+              <description>GPIO34 function selection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>pad_pe0</name>
+          <displayName>pad_pe0</displayName>
+          <description>GPIO PAD PE0</description>
+          <addressOffset>0x3c</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>r_io_pe</name>
+              <description>GPIO PAD PE0</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>0</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>pad_pe1</name>
+          <displayName>pad_pe1</displayName>
+          <description>GPIO PAD PE1</description>
+          <addressOffset>0x40</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+        </register>
+        <register>
+          <name>pad_ps0</name>
+          <displayName>pad_ps0</displayName>
+          <description>GPIO PAD PS0</description>
+          <addressOffset>0x44</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>r_io_ds</name>
+              <description>GPIO PAD DS0</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>0</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>pad_ps1</name>
+          <displayName>pad_ps1</displayName>
+          <description>GPIO PAD PS1</description>
+          <addressOffset>0x48</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+        </register>
+        <register>
+          <name>keyscan_in_en</name>
+          <displayName>keyscan_in_en</displayName>
+          <description>GPIO KeyScan in</description>
+          <addressOffset>0x4c</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+        </register>
+        <register>
+          <name>keyscan_out_en</name>
+          <displayName>keyscan_out_en</displayName>
+          <description>GPIO KeyScan out</description>
+          <addressOffset>0x50</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>AON</name>
+      <description>AON</description>
+      <groupName>AON</groupName>
+      <baseAddress>0x4000F000</baseAddress>
+      <addressBlock>
+        <offset>0x0</offset>
+        <size>0x2a0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>PWROFF</name>
+          <displayName>PWROFF</displayName>
+          <description>Power off register</description>
+          <addressOffset>0x0</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+        </register>
+        <register>
+          <name>PWRSLP</name>
+          <displayName>PWRSLP</displayName>
+          <description>Power sleep register</description>
+          <addressOffset>0x4</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+        </register>
+        <register>
+          <name>IOCTL0</name>
+          <displayName>IOCTL0</displayName>
+          <description>GPIO pull and wakeup control 0</description>
+          <addressOffset>0x8</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>p09_pul</name>
+              <description>GPIO09 Pull type</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p09_wu_s</name>
+              <description>GPIO09 wake-up</description>
+              <bitOffset>27</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p08_pul</name>
+              <description>GPIO08 Pull type</description>
+              <bitOffset>25</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p08_wu_s</name>
+              <description>GPIO08 wake-up</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p07_pul</name>
+              <description>GPIO07 Pull type</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p07_wu_s</name>
+              <description>GPIO07 wake-up</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p06_pul</name>
+              <description>GPIO06 Pull type</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p06_wu_s</name>
+              <description>GPIO06 wake-up</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p05_pul</name>
+              <description>GPIO05 Pull type</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p05_wu_s</name>
+              <description>GPIO05 wake-up</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p04_pul</name>
+              <description>GPIO04 Pull type</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p04_wu_s</name>
+              <description>GPIO04 wake-up</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p03_pul</name>
+              <description>GPIO03 Pull type</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p03_wu_s</name>
+              <description>GPIO03 wake-up</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p02_pul</name>
+              <description>GPIO02 Pull type</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p02_wu_s</name>
+              <description>GPIO02 wake-up</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p01_pul</name>
+              <description>GPIO01 Pull type</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p01_wu_s</name>
+              <description>GPIO01 wake-up</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p00_pul</name>
+              <description>GPIO00 Pull type</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p00_wu_s</name>
+              <description>GPIO00 wake-up</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>IOCTL1</name>
+          <displayName>IOCTL1</displayName>
+          <description>GPIO pull and wakeup control 1</description>
+          <addressOffset>0xc</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>p19_pul</name>
+              <description>GPIO19 Pull type</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p19_wu_s</name>
+              <description>GPIO19 wake-up</description>
+              <bitOffset>27</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p18_pul</name>
+              <description>GPIO18 Pull type</description>
+              <bitOffset>25</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p18_wu_s</name>
+              <description>GPIO18 wake-up</description>
+              <bitOffset>24</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p17_pul</name>
+              <description>GPIO17 Pull type</description>
+              <bitOffset>22</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p17_wu_s</name>
+              <description>GPIO17 wake-up</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p16_pul</name>
+              <description>GPIO16 Pull type</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p16_wu_s</name>
+              <description>GPIO16 wake-up</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p15_pul</name>
+              <description>GPIO15 Pull type</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p15_wu_s</name>
+              <description>GPIO15 wake-up</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p14_pul</name>
+              <description>GPIO14 Pull type</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p14_wu_s</name>
+              <description>GPIO14 wake-up</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p13_pul</name>
+              <description>GPIO13 Pull type</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p13_wu_s</name>
+              <description>GPIO13 wake-up</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p12_pul</name>
+              <description>GPIO12 Pull type</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p12_wu_s</name>
+              <description>GPIO12 wake-up</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p11_pul</name>
+              <description>GPIO11 Pull type</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p11_wu_s</name>
+              <description>GPIO11 wake-up</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>p10_pul</name>
+              <description>GPIO10 Pull type</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>p10_wu_s</name>
+              <description>GPIO10 wake-up</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>IOCTL2</name>
+          <displayName>IOCTL2</displayName>
+          <description>GPIO retention control</description>
+          <addressOffset>0x10</addressOffset>
+          <size>0x14</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+        </register>
+        <register>
+          <name>PMCTL0</name>
+          <displayName>PMCTL0</displayName>
+          <description>Power management control register 0</description>
+          <addressOffset>0x14</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>rtc_clk_sel</name>
+              <description>RTC clock selection</description>
+              <bitOffset>31</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>slp_en_lpcmp</name>
+              <description>Sleep enable low-power comparator</description>
+              <bitOffset>30</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>slp_en_rtc</name>
+              <description>RTC sleep enable</description>
+              <bitOffset>29</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>slp_en_xt32k</name>
+              <description>Sleep enable XT 32.768kHz</description>
+              <bitOffset>28</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>slp_en_rc32k</name>
+              <description>Sleep enable RC 32.376kHz</description>
+              <bitOffset>27</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>lcldo_out_trim</name>
+              <description>LDO output trim enable</description>
+              <bitOffset>26</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>dig_ldo_trim</name>
+              <description>LDO Trim value</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>PMCTL1</name>
+          <displayName>PMCTL1</displayName>
+          <description>Power management control register 1</description>
+          <addressOffset>0x18</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>dp_res_enb_p6</name>
+              <description>XT bias enable P6</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>dp_res_enb_p0</name>
+              <description>XT bias enable P0</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>rc32m_c_trim</name>
+              <description>RC 32MHz frequency trim</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+            <field>
+              <name>rc32m_cap_mux</name>
+              <description>RC 32MHz cap mux</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>rc32k_cap_mux</name>
+              <description>RC 32.768kHz cap mux</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>rc32k_c_trim</name>
+              <description>RC 32.768kHz frequnecy trim</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>6</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>PMCTL2_0</name>
+          <displayName>PMCTL2_0</displayName>
+          <description>Power management control register 2_0</description>
+          <addressOffset>0x1c</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x1FF86</resetValue>
+          <fields>
+            <field>
+              <name>retram4_en</name>
+              <description>Retention RAM4 enable</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>retram2_en</name>
+              <description>Retention RAM2 enable</description>
+              <bitOffset>19</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>retram1_en</name>
+              <description>Retention RAM1 enable</description>
+              <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>retram0_en</name>
+              <description>Retention RAM0 enable</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>lpcmp_en_ctl</name>
+              <description>LPCMP enable</description>
+              <bitOffset>16</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>rtc_en_ctl</name>
+              <description>RTC enable</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>lcldo_en_ctl</name>
+              <description>LCLDO enable</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>chgp_en_ctl</name>
+              <description>CHGP enable</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>digldo_en_ctl</name>
+              <description>DIGLDO enable</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>dcdc_en_ctl</name>
+              <description>DCDC enable</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>bg_en_ctl</name>
+              <description>BG enable</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>xt32k_en_ctl</name>
+              <description>XT32K enable</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>rc32k_en_ctl</name>
+              <description>RC32K enable</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>rc_32m_en_ctl</name>
+              <description>RC32M enable</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>pwr_ctl_mode</name>
+              <description>Power control mode</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>chgp_wait_sel</name>
+              <description>CHGP Wait selection</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>3</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>PMCTL2_1</name>
+          <displayName>PMCTL2_1</displayName>
+          <description>Power management control register 2_1</description>
+          <addressOffset>0x20</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x0000</resetValue>
+          <fields>
+            <field>
+              <name>aio_atten_aio9</name>
+              <description>Attenuation enable for AIO_9</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+              <name>aio_atten_aio8</name>
+              <description>Attenuation enable for AIO_8</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+              <name>aio_atten_aio7</name>
+              <description>Attenuation enable for AIO_7</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+              <name>aio_atten_aio4</name>
+              <description>Attenuation enable for AIO_4</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+              <name>aio_atten_aio3</name>
+              <description>Attenuation enable for AIO_3</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+              <name>aio_atten_aio2</name>
+              <description>Attenuation enable for AIO_2</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+              <name>aio_atten_aio1</name>
+              <description>Attenuation enable for AIO_1</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>aio_passthrough_9</name>
+              <description>Passthrough enable for AIO_9</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+              <name>aio_passthrough_8</name>
+              <description>Passthrough enable for AIO_8</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+              <name>aio_passthrough_7</name>
+              <description>Passthrough enable for AIO_7</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+              <name>aio_passthrough_4</name>
+              <description>Passthrough enable for AIO_4</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+              <name>aio_passthrough_3</name>
+              <description>Passthrough enable for AIO_3</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+              <name>aio_passthrough_2</name>
+              <description>Passthrough enable for AIO_2</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+              <name>aio_passthrough_1</name>
+              <description>Passthrough enable for AIO_1</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+  </peripherals>
+</device>
