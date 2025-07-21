@@ -2992,7 +2992,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <displayName>IOCTL2</displayName>
           <description>GPIO retention control</description>
           <addressOffset>0x10</addressOffset>
-          <size>0x14</size>
+          <size>0x20</size>
           <access>read-write</access>
           <resetValue>0x0000</resetValue>
         </register>
@@ -3218,31 +3218,37 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitOffset>14</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
+            <field>
               <name>aio_atten_aio8</name>
               <description>Attenuation enable for AIO_8</description>
               <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
+            <field>
               <name>aio_atten_aio7</name>
               <description>Attenuation enable for AIO_7</description>
               <bitOffset>12</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
+            <field>
               <name>aio_atten_aio4</name>
               <description>Attenuation enable for AIO_4</description>
               <bitOffset>11</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
+            <field>
               <name>aio_atten_aio3</name>
               <description>Attenuation enable for AIO_3</description>
               <bitOffset>10</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
+            <field>
               <name>aio_atten_aio2</name>
               <description>Attenuation enable for AIO_2</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
+            <field>
               <name>aio_atten_aio1</name>
               <description>Attenuation enable for AIO_1</description>
               <bitOffset>8</bitOffset>
@@ -3254,31 +3260,37 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitOffset>6</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
+            <field>
               <name>aio_passthrough_8</name>
               <description>Passthrough enable for AIO_8</description>
               <bitOffset>5</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
+            <field>
               <name>aio_passthrough_7</name>
               <description>Passthrough enable for AIO_7</description>
               <bitOffset>4</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
+            <field>
               <name>aio_passthrough_4</name>
               <description>Passthrough enable for AIO_4</description>
               <bitOffset>3</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
+            <field>
               <name>aio_passthrough_3</name>
               <description>Passthrough enable for AIO_3</description>
               <bitOffset>2</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
+            <field>
               <name>aio_passthrough_2</name>
               <description>Passthrough enable for AIO_2</description>
               <bitOffset>1</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
+            <field>
               <name>aio_passthrough_1</name>
               <description>Passthrough enable for AIO_1</description>
               <bitOffset>0</bitOffset>
